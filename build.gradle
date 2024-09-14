@@ -1,0 +1,36 @@
+//define los plugins necesarios para el proyecto
+plugins {
+    // Aplica el plugin de Java, habilita la compatibilidad con Java en Gradle
+    id 'java'
+}
+// Define el grupo del proyecto (normalmente utilizado para definir la organización o empresa)
+group = 'TheFreeRangeTester'
+// Define la versión del proyecto
+version = '1.0-SNAPSHOT'
+// Especifica la compatibilidad con una versión específica de Java
+sourceCompatibility = '1.8'
+// Configura los repositorios donde Gradle buscará las dependencias del proyecto
+repositories {
+    // Usa Maven Central, repositorio público que contiene una gran cantidad de bibliotecas
+    mavenCentral()
+}
+// Define las dependencias del proyecto, tanto para compilación como para pruebas
+dependencies {
+    // Incluye la biblioteca Rest Assured para realizar pruebas de APIs REST
+    testImplementation group: 'io.rest-assured', name: 'rest-assured', version: '5.5.0'    
+    // Incluye la biblioteca Cucumber para crear y ejecutar pruebas basadas en BDD (Behavior Driven Development)
+    implementation group: 'io.cucumber', name: 'cucumber-java', version: '6.10.3'
+    // Incluye la implementación de Cucumber con JUnit para ejecutar pruebas de Cucumber con el marco JUnit
+    testImplementation 'io.cucumber:cucumber-junit:6.10.3'
+    // Incluye la biblioteca org.json para trabajar con objetos JSON
+    implementation group: 'org.json', name: 'json', version: '20180813'
+    // Usa la plataforma JUnit BOM (Bill of Materials) para garantizar la compatibilidad entre diferentes versiones de JUnit
+    testImplementation platform('org.junit:junit-bom:5.7.1')
+    // Añade JUnit Jupiter (la nueva versión de JUnit) para ejecutar las pruebas
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+// Configura el bloque de pruebas
+test {
+    // Indica a Gradle que utilice la plataforma JUnit para ejecutar las pruebas
+    useJUnitPlatform()
+}
